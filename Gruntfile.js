@@ -2,6 +2,8 @@ module.exports = function(grunt) {
     
     var config = grunt.file.readJSON(grunt.option('CONFIG') || 'config.json');
     
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
+    
     grunt.registerTask('generateIndex', function(){
         grunt.file.copy('index.html', config.buildFolder+'/index.html', {
             process: function(files){
@@ -40,6 +42,17 @@ module.exports = function(grunt) {
             }
         });
     });
+    /* grunt.initConfig({
+        jasmine: {
+            JS: {
+              src: 'js/*.js',
+              options: {
+                specs: 'spec/*.spec.js'
+              }
+            }
+          }
+
+     });*/
 
     grunt.registerTask('build', ['generateIndex','generatepage1','generatepage2']);
 };
