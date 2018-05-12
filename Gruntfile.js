@@ -1,7 +1,11 @@
 module.exports = function(grunt) {
     
-    var config = grunt.file.readJSON(grunt.option('CONFIG') || 'config.json');
-    
+    var config;
+    try {
+        config = grunt.file.readJSON(grunt.option('CONFIG'));
+    } catch (error) {
+        config = grunt.file.readJSON('config.json');
+    }
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
     
     grunt.registerTask('generateIndex', function(){
