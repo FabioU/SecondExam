@@ -42,17 +42,16 @@ module.exports = function(grunt) {
             }
         });
     });
-    /* grunt.initConfig({
+     grunt.initConfig({
         jasmine: {
             JS: {
-              src: 'js/*.js',
               options: {
                 specs: 'spec/*.spec.js'
               }
             }
           }
 
-     });*/
+     });
 
-    grunt.registerTask('build', ['generateIndex','generatepage1','generatepage2']);
+    grunt.registerTask('build', ['generateIndex','generatepage1','generatepage2','jasmine']);
 };
