@@ -6,6 +6,12 @@ module.exports = function(grunt) {
     } catch (error) {
         config = grunt.file.readJSON('config.json');
     }
+    var dataf;
+    try {
+        dataf = grunt.file.readJSON(grunt.option('DB'));
+    } catch (error) {
+        dataf = grunt.file.readJSON('data.json');
+    }
 	grunt.loadNpmTasks('grunt-contrib-jasmine');
     
     grunt.registerTask('generateIndex', function(){
@@ -14,6 +20,8 @@ module.exports = function(grunt) {
                 return grunt.template.process(files,{
                     data: {
                         pageTitle: config.appName,
+                        pageOneName : config.pageOneName,
+                        pageTwoName : config.pageTwoName
                         
                     }
                 });
@@ -27,6 +35,10 @@ module.exports = function(grunt) {
                 return grunt.template.process(files,{
                     data: {
                         pageTitle: config.appName,
+                        avatar: dataf.avatar,
+                        username: dataf.username,
+                        nickname: dataf.nickname,
+                        link: dataf.link
                         
                     }
                 });

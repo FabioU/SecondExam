@@ -5,8 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><%= pageTitle%></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body background= "https://www.thomaskioko.com/wp-content/uploads/2014/02/GithubTutorial_part2.jpg" style="height:100%; background-position: initial; background-repeat: no-repeat; background-size:cover"> 
+    <div> 
+        <h2 style= "color:white">Profile</h2>
+        <div class="card text-white bg-dark mb-3" style="width:350px">
+            <img class="card-img" src="<%=avatar%>" alt="Card image" style="width:100%">
+            <div class="card-body">
+            <h4 class="card-name">User: <%=username %></h4>
+            <h4 class="card-nick">Nick: <%=nickname %></h4>
+            <h6 class="card-url">Url: <%=link %></h6>            
+            <a href="<%=link%>" class="btn btn-primary">See Repository</a>
+            </div>
+        </div>
+    </div>
     
 </body>
 </html>
