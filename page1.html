@@ -11,15 +11,22 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <body background= "https://www.thomaskioko.com/wp-content/uploads/2014/02/GithubTutorial_part2.jpg" style="height:100%; background-position: initial; background-repeat: no-repeat; background-size:cover"> 
+    <h2 style= "color:white">PROFILES</h2>
     <div> 
-        <h2 style= "color:white">Profile</h2>
-        <div class="card text-white bg-dark mb-3" style="width:350px">
-            <img class="card-img" src="<%=avatar%>" alt="Card image" style="width:100%">
-            <div class="card-body">
-            <h4 class="card-name">User: <%=username %></h4>
-            <h4 class="card-nick">Nick: <%=nickname %></h4>
-            <h6 class="card-url">Url: <%=link %></h6>            
-            <a href="<%=link%>" class="btn btn-primary">See Repository</a>
+        <div class="container">
+            <div class="row">
+                <% users.forEach(function(user){%>
+                <div class="card text-white bg-dark mb-3 col-4">
+                    <img class="card-img" src="<%=user.avatar_url%>" alt="Card image" style="width:100%">
+                    <div class="card-body">
+                    <h4 class="card-name">User: <%= user.name %></h4>
+                    <h4 class="card-nick">Nick: <%=user.nickName %></h4>
+                    <h6 class="card-url">Url: <%=user.github_url %></h6>            
+                    <a href="<%=user.github_url%>" class="btn btn-primary">See Repository</a>
+                    </div>
+                </div>
+                
+                <% });%>
             </div>
         </div>
     </div>

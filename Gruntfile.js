@@ -12,8 +12,21 @@ module.exports = function(grunt) {
     } catch (error) {
         dataf = grunt.file.readJSON('data.json');
     }
-	grunt.loadNpmTasks('grunt-contrib-jasmine');
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
     
+    var vec =[]; 
+    vec = dataf.users;
+    
+    for (let i = 0; i < vec.length; i++) {
+        if(vec[i].avatar_url===""){
+            vec[i].avatar_url = "https://help.github.com/assets/images/help/profile/identicon.png";
+        }        
+    }
+    var block = "enable";
+    if(config.enablePageTwoLink===false){
+        block = "disabled";
+    }
+
     grunt.registerTask('generateIndex', function(){
         grunt.file.copy('index.html', config.buildFolder+'/index.html', {
             process: function(files){
@@ -21,8 +34,8 @@ module.exports = function(grunt) {
                     data: {
                         pageTitle: config.appName,
                         pageOneName : config.pageOneName,
-                        pageTwoName : config.pageTwoName
-                        
+                        pageTwoName : config.pageTwoName,
+                        block : block
                     }
                 });
             }
@@ -34,11 +47,9 @@ module.exports = function(grunt) {
             process: function(files){
                 return grunt.template.process(files,{
                     data: {
+                        
                         pageTitle: config.appName,
-                        avatar: dataf.avatar,
-                        username: dataf.username,
-                        nickname: dataf.nickname,
-                        link: dataf.link
+                        users : vec
                         
                     }
                 });
