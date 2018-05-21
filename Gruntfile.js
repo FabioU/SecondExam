@@ -40,7 +40,8 @@ module.exports = function(grunt) {
                 return grunt.template.process(files,{
                     data: {
                         pageTitle: config.appName,
-                        
+                        title: config.freeContent.title,
+                        body: config.freeContent.body,
                     }
                 });
             }
