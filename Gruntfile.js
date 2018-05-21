@@ -6,15 +6,36 @@ module.exports = function(grunt) {
     } catch (error) {
         config = grunt.file.readJSON('config.json');
     }
-	grunt.loadNpmTasks('grunt-contrib-jasmine');
+    var dataf;
+    try {
+        dataf = grunt.file.readJSON(grunt.option('DB'));
+    } catch (error) {
+        dataf = grunt.file.readJSON('data.json');
+    }
+    grunt.loadNpmTasks('grunt-contrib-jasmine');
     
+    var vec =[]; 
+    vec = dataf.users;
+    
+    for (let i = 0; i < vec.length; i++) {
+        if(vec[i].avatar_url===""){
+            vec[i].avatar_url = "https://help.github.com/assets/images/help/profile/identicon.png";
+        }        
+    }
+    var block = "enable";
+    if(config.enablePageTwoLink===false){
+        block = "disabled";
+    }
+
     grunt.registerTask('generateIndex', function(){
         grunt.file.copy('index.html', config.buildFolder+'/index.html', {
             process: function(files){
                 return grunt.template.process(files,{
                     data: {
                         pageTitle: config.appName,
-                        
+                        pageOneName : config.pageOneName,
+                        pageTwoName : config.pageTwoName,
+                        block : block
                     }
                 });
             }
@@ -26,7 +47,9 @@ module.exports = function(grunt) {
             process: function(files){
                 return grunt.template.process(files,{
                     data: {
+                        
                         pageTitle: config.appName,
+                        users : vec
                         
                     }
                 });
