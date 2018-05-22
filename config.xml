@@ -9,7 +9,7 @@
         <hudson.model.StringParameterDefinition>
           <name>BRANCH</name>
           <description></description>
-          <defaultValue>CI-001</defaultValue>
+          <defaultValue>develop</defaultValue>
           <trim>true</trim>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
@@ -56,12 +56,12 @@
       <nodeJSInstallationName>Node</nodeJSInstallationName>
     </jenkins.plugins.nodejs.NodeJSCommandInterpreter>
     <hudson.tasks.BatchFile>
-      <command>npm install &amp; grunt build --CONFIG=&quot;%CONFIG%&quot; &amp; echo &quot;%DB%&quot;</command>
+      <command>npm install &amp; grunt build --CONFIG=&quot;%CONFIG%&quot; --DB=&quot;%DB%&quot;</command>
     </hudson.tasks.BatchFile>
   </builders>
   <publishers>
     <hudson.tasks.Mailer plugin="mailer@1.21">
-      <recipients>fabio.u.test@gmail.com</recipients>
+      <recipients>fabio.u.test@gmail.com, nico.carrasco.test@gmail.com, heidy.choque.test@gmail.com, aljiar23.test@gmail.com</recipients>
       <dontNotifyEveryUnstableBuild>false</dontNotifyEveryUnstableBuild>
       <sendToIndividuals>false</sendToIndividuals>
     </hudson.tasks.Mailer>
