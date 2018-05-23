@@ -1,0 +1,11 @@
+{
+	"buildFolder":"build",
+	"appName": "Examen Final",
+	"pageOneName": "paginaUno",
+	"pageTwoName": "paginaDos",
+	"enablePageTwoLink": true,
+	"freeContent": {
+		"title": "Titulo de la segunda pagina",
+		"body": "Lorem ipsum"
+	}
+}

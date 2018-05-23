@@ -9,8 +9,7 @@ module.exports = function(grunt) {
     var dataf;
     try {
         dataf = grunt.file.readJSON(grunt.option('DB'));
-    } catch (error) {
-        dataf = grunt.file.readJSON('data.json');
+    } catch (error) { dataf = grunt.file.readJSON('data.json');
     }
     grunt.loadNpmTasks('grunt-contrib-jasmine');
     
